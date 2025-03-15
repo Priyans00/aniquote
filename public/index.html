@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Quotes API</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Anime Quotes API</h1>
+        <p>Explore a collection of quotes from your favorite anime characters.</p>
+        <div class="button-container">
+            <a href="/quote" class="button">Get Random Quote</a>
+            <a href="#" class="button" onclick="promptId()">Get Quote by ID</a>
+            <a href="#" class="button" onclick="promptAnimeName()">Get Quotes by Anime Name</a>
+            <a href="#" class="button" onclick="promptCharacterName()">Get Quotes by Character Name</a>
+        </div>
+    </div>
+    <script>
+        function promptId() {
+            const id = prompt("Enter Quote ID:");
+            if (id) {
+                window.location.href = `/quote/${id}`;
+            }
+        }
+
+        function promptAnimeName() {
+            const name = prompt("Enter Anime Name:");
+            if (name) {
+                window.location.href = `/quote/anime/${encodeURIComponent(name)}`;
+            }
+        }
+
+        function promptCharacterName() {
+            const name = prompt("Enter Character Name:");
+            if (name) {
+                window.location.href = `/quote/character/${encodeURIComponent(name)}`;
+            }
+        }
+    </script>
+</body>
+</html>
