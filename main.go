@@ -46,6 +46,12 @@ func connectWithSupa() (error, *supabase.Client) {
     return err, supaClient
 }
 
+func health(c *fiber.Ctx) error {
+    return c.JSON(fiber.Map{
+        "status": "ok",
+    })
+}
+
 func getData(c *fiber.Ctx) error {
     k := random()
     err, supaClient := connectWithSupa()
@@ -140,6 +146,7 @@ func main() {
         Max:        10,
     }))
     app.Static("/", "./public")
+    app.Get("/health", health)
     app.Get("/quote", getData)
     app.Get("/quote/:id", dataById)
     app.Get("/quote/anime/:name", dataByAnimeName)
